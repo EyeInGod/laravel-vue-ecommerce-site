@@ -14,7 +14,7 @@ export const useCart = defineStore("shopState", {
         async getProductsFromApi() {
             try {
                 this.loading = true;
-                const response = await axios.get("/api/products");
+                const response = await axios.get("api/products");
                 this.products = response.data;
                 this.loading = false;
             } catch (error) {
@@ -23,7 +23,7 @@ export const useCart = defineStore("shopState", {
         },
         addToCart({ item }) {
             const foundProductInCartIndex = this.cart.findIndex(
-                (cartItem) => item.slug === cartItem.slug
+                (cartItem) => item.slug === cartItem.slug,
             );
 
             if (foundProductInCartIndex > -1) {
@@ -60,7 +60,7 @@ export const useCart = defineStore("shopState", {
         getCartQuantity() {
             return this.cart.reduce(
                 (total, product) => total + product.quantity,
-                0
+                0,
             );
         },
         getOrderDetails() {
@@ -75,7 +75,7 @@ export const useCart = defineStore("shopState", {
         getCartTotal() {
             return this.cart.reduce(
                 (total, product) => total + product.price * product.quantity,
-                0
+                0,
             );
         },
     },

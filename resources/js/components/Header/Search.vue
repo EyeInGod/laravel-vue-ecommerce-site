@@ -65,7 +65,7 @@ const fetcher = (key) => fetch(key).then((res) => res.json());
 const searchTerm = ref("");
 
 const { data } = useSWRV(
-    () => (searchTerm.value ? `/api/products?q=${searchTerm.value}` : null),
-    fetcher
+    () => (searchTerm.value ? `api/products?q=${searchTerm.value}` : null),
+    fetcher,
 );
 </script>

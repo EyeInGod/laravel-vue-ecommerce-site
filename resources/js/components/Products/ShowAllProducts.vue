@@ -52,5 +52,5 @@ import useSWRV from "swrv";
 import formatPrice from "../../utils/functions";
 
 const fetcher = (key) => fetch(key).then((res) => res.json());
-const { data, error } = useSWRV("/api/products", fetcher);
+const { data, error } = useSWRV("api/products", fetcher);
 </script>
